@@ -92,7 +92,7 @@ describe('TodosService', () => {
 
     const testRequest = httpTestingController.expectOne(API_URI+ '/' + expectedData.id);
 
-    expect(testRequest.request.method).toEqual('PUT');
+    expect(testRequest.request.method).toEqual('GET');
   });
 
 
