@@ -9,7 +9,8 @@
         "test": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
         "coverage": "ng test --watch --code-coverage",
         "coveragen": "ng test --watch --code-coverage",
-        "test-build": "ng test && ng build"
+        "test-build": "ng test && ng build",
+        "build:ci": "ng build --prod"
     },
     "private": true,
     "dependencies": {
