@@ -8,6 +8,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "coverage": "ng test --watch --code-coverage",
+        "coveragen": "ng test --watch --code-coverage",
         "test-build": "ng test && ng build"
     },
     "private": true,
