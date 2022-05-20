@@ -10,7 +10,7 @@
         "coverage": "ng test --watch --code-coverage",
         "coveragen": "ng test --watch --code-coverage",
         "test-build": "ng test && ng build",
-        "lint": "ng lint"
+        "lint-old": "ng lint"
     },
     "private": true,
     "dependencies": {
