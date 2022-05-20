@@ -19,5 +19,5 @@ jobs:
       - name: Test
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-      - name: Build
+      - name: Build Ng
         run: npm run build:ci
