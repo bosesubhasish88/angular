@@ -1,6 +1,7 @@
 name: CI Angular app through Github Actions
-on: push
-branches:
+on: 
+  push:
+    branches:
       - 'master'
 jobs:
   build:
