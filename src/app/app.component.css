@@ -1,0 +1,36 @@
+/* .notify_info,
+.notify_success,
+.notify_warning,
+.notify_error {
+    margin: 10px 0px;
+    padding: 12px;
+}
+
+.notify_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+
+.notify_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.notify_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.notify_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.notify_info i,
+.notify_success i,
+.notify_warning i,
+.notify_error i {
+    margin: 10px 22px;
+    font-size: 2em;
+    vertical-align: middle;
+} */
