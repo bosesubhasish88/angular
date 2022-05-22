@@ -18,6 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - id: extract_branch
+        shell: bash
         run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
 
   lint_test_build:
