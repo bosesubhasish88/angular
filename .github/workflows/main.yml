@@ -9,23 +9,37 @@ on:
       branches:
         - 'master'
 jobs:
-  build:
+  lint_test_build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
 
-      - name: Setup
+      - name: Install npm packages
         run: npm ci
 
- #     - name: Lint
+ #     - name: Run Lint
  #       run: npm run lint
 
-      - name: Test
+      - name: Run unit test
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-      - name: Build
+      - name: Build the application
         run: npm run build
+      
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_coverage
+          path: coverage
