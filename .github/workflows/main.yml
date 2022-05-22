@@ -23,7 +23,7 @@ jobs:
   lint_test_build_prod:
     needs: params 
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.branch == 'master' }}
+    if: ${{ needs.params.outputs.branch == 'master' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
   lint_test_build_dev:
       needs: params 
       runs-on: ubuntu-latest
-      if: ${{ needs.build.outputs.branch == 'dev' }}
+      if: ${{ needs.params.outputs.branch == 'dev' }}
       steps:
         - name: Checkout repository
           uses: actions/checkout@v2
