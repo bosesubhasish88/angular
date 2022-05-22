@@ -16,10 +16,10 @@ jobs:
         branch: ${{ steps.extract_branch.outputs.branch }}
     steps:
       - name: Extract branch name
-      - uses: actions/checkout@v2
-      shell: bash
-      run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
+        uses: actions/checkout@v2
+        shell: bash
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
   lint_test_build_prod:
     needs: params 
     runs-on: ubuntu-latest
