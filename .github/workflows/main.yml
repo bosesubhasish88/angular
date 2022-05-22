@@ -35,8 +35,8 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v1
         with:
-          name: app dist
-          path: Application Build
+          name: Aplication dist
+          path: dist
       - name: Archive code coverage result
         if: success()
         uses: actions/upload-artifact@v1
@@ -44,4 +44,4 @@ jobs:
           name: Test coverage
           path: coverage
       - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3     
