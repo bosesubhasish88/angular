@@ -23,7 +23,7 @@ jobs:
   lint_test_build:
     needs: params
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.branch == 'master' }}
+    if: ${{ needs.params.outputs.branch == 'master' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
