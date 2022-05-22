@@ -1,4 +1,4 @@
-name: CI Angular app through Github Actions
+name: Testing Github Actions and Workflow
 on: 
  #push:
     #branches:
@@ -11,13 +11,20 @@ on:
 jobs:
   lint_test_build:
     runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.extract_branch.outputs.branch }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Extract branch name
+        shell: bash
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+          cache: 'npm'
 
       - name: Install npm packages
         run: npm ci
@@ -42,6 +49,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: Test coverage
-          path: coverage
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3     
+          path: coverage 
