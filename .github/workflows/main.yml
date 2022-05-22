@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      -id: extract_branch
-      run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+      - id: extract_branch
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
