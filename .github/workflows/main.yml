@@ -19,3 +19,41 @@ jobs:
         uses: actions/checkout@v2
       - id: extract_branch
         run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+
+  lint_test_build:
+    needs: params
+    runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.branch == 'master' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          cache: 'npm'
+
+      - name: Install npm packages
+        run: npm ci
+
+ #     - name: Run Lint
+ #       run: npm run lint
+
+      - name: Run unit test
+        run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+
+      - name: Build the application
+        run: npm run build-prod
+      
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: Aplication dist
+          path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: Test coverage
+          path: coverage 
