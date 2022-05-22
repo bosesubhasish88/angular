@@ -8,7 +8,7 @@ on:
     pull_request:
       branches:
         - 'master'
-        - 'dev'
+        - 'dev' 
 jobs:
   params:
     runs-on: ubuntu-latest
