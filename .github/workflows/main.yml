@@ -36,9 +36,7 @@ jobs:
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
       - name: Build the application
-        if: ${{ needs.build.outputs.branch == 'master' }}
-        run: npm run build-prod
-        if: ${{ needs.build.outputs.branch == 'dev' }}
+        
         run: npm run build
       - name: Archive build
         if: success()
