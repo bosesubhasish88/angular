@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print Branch Name 
-      run: echo "Workflow will run on ${{ github.event.inputs.branch }} branch"
+      run: echo "Workflow will run with ${{ github.event.inputs.branch }} environment"
 
   stageCI:
     runs-on: ubuntu-latest
