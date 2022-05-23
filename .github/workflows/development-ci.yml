@@ -1,14 +1,16 @@
-name: CI Workflow Development
+name: CI Workflow Staging  
 
 on:
   push:
-    branches: [ development ]
-  pull_request:
-    branches: [ development ]
+    branches: [ staging ]
+  pull_request_review:
+    types: [submitted]
+    branches: [ staging ]
   workflow_dispatch:
 
 jobs:
-  developmentCI:
+  stageCI:
+    if: (github.event_name == 'pull_request' && github.event.review.state == 'approved') || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -29,7 +31,7 @@ jobs:
       run: npm run test:ci
 
     - name: Build the application
-      run: npm run build
+      run: npm run build:stage
     
     - name: Archive build
       if: success()
