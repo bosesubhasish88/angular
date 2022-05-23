@@ -3,12 +3,14 @@ name: CI Workflow Staging
 on:
   push:
     branches: [ staging ]
-  pull_request:
+  pull_request_review:
+    types: [submitted]
     branches: [ staging ]
   workflow_dispatch:
 
 jobs:
   stageCI:
+    if: (github.event_name == 'pull_request' && github.event.review.state == 'approved') || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
