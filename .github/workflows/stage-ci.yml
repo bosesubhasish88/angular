@@ -3,18 +3,19 @@ name: CI Workflow Staging
 on:
   push:
     branches: [ staging ]
-  pull_request_review:
-    types: [submitted]
+  # pull_request_review:
+  # types: [submitted]
+  pull_request:
     branches: [ staging ]
   workflow_dispatch:
 
 jobs:
   stageCI:
-    if: (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') || github.event_name == 'push'
+    #if: (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-    - name: Echo variables
-      run: echo "Var ${{github.event_name}} ${{github.event.review.state }}"
+    #- name: Echo variables
+    #  run: echo "Var ${{github.event_name}} ${{github.event.review.state }}"
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Use Node.js 14.x
