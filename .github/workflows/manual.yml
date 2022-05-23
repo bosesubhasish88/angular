@@ -30,8 +30,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: CI will run on the branch= 
-      run: echo "Hello ${{ github.event.inputs.branch }}"
+    - name: Print Branch Name 
+      run: echo "Workflow will run on ${{ github.event.inputs.branch }} branch"
 
   stageCI:
     runs-on: ubuntu-latest
