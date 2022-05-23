@@ -1,0 +1,45 @@
+name: CI + CD
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+  workflow_dispatch:
+
+  jobs:
+    stageCI:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          cache: 'npm'
+
+      - name: Install npm packages
+        run: npm ci
+
+#     - name: Run Lint
+#       run: npm run lint
+
+      - name: Run unit test
+        run: npm test:ci
+
+      - name: Build the application
+        run: npm run build
+      
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: Application Build
+          path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: Application Test coverage
+          path: coverage 
