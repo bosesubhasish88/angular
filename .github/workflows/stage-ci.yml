@@ -10,10 +10,10 @@ on:
 
 jobs:
   stageCI:
-    #if: (github.event_name == 'pull_request' && github.event.review.state == 'approved') || github.event_name == 'push'
+    if: (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-    - name: Echo variable
+    - name: Echo variables
       run: echo "Var ${{github.event_name}} ${{github.event.review.state }}"
     - name: Checkout repository
       uses: actions/checkout@v2
