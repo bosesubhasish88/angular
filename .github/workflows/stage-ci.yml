@@ -1,4 +1,4 @@
-name: CI Workflow  Staging  
+name: CI Workflow Staging  
 
 on:
   push:
